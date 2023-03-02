@@ -6,21 +6,27 @@
     <div class="container">
     <h1>Create new Musician</h1>
     <form method="POST" action="/musicians">
-        <div>
+        <div class="mb-2">
             <label for="name">Enter Artist's Name</label>
-            <input type="text" name="name" id="name">
+            <input class="form-control" type="text" name="name" id="name">
         </div>
-        <div>
-            <label for="name">Enter Url for Image</label>
-            <input type="text" name="image" id="image">
+        <div class="mb-2">
+            <label class="form-label" for="name">Enter Url for Image</label>
+            <input class="form-control" type="text" name="image" id="image">
         </div>
-        <div>
-            <label for="name">Enter Artist's Instruments</label>
-            <input type="text" name="instrument" id="instrument">
+        <div class="mb-2">
+            <label  class="form-label" for="name">Enter Artist's Instruments</label>
+            <input class="form-control" type="text" name="instrument" id="instrument">
         </div>
-        <input type="submit" class="btn btn-success" value="Add new Artist"/>
+        <div class="text-center my-2 py-2">
+<input type="submit" class="btn btn-success" value="Add new Artist" />
+        </div>
+        
     </form>
     </div>
+
+
+ 
 </main>
 
 

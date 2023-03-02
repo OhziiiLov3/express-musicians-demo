@@ -1,9 +1,11 @@
 const express = require("express")
 const app = express()
-
+const methodOverride = require("method-override");
 // imports controller from folder
 const musiciansController = require("./controllers/musicians")
 const userController = require("./controllers/users")
+// Allows us to override form method to delete
+app.use(methodOverride("_method"));
 
 //  setup ejs 
 app.set("view engine","ejs")
