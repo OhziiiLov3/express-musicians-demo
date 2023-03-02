@@ -3,5 +3,6 @@ require('../config/connection')
 
 
 module.exports = {
-Musicians: require('./Musicians')
+Musicians: require('./Musicians'),
+Users: require('./Users')
 }

@@ -1,0 +1,31 @@
+<%- include('../partials/head', {pageName: "Create new Musician"}) %>
+<body>
+<%- include('../partials/header') %>
+
+<main>
+    <div class="container">
+    <h1>Create new Musician</h1>
+    <form method="POST" action="/musicians">
+        <div>
+            <label for="name">Enter Artist's Name</label>
+            <input type="text" name="name" id="name">
+        </div>
+        <div>
+            <label for="name">Enter Url for Image</label>
+            <input type="text" name="image" id="image">
+        </div>
+        <div>
+            <label for="name">Enter Artist's Instruments</label>
+            <input type="text" name="instrument" id="instrument">
+        </div>
+        <input type="submit" class="btn btn-success" value="Add new Artist"/>
+    </form>
+    </div>
+</main>
+
+
+
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+</body>

@@ -6,15 +6,21 @@ const musiciansSchema = new mongoose.Schema(
             type:String,
             required: [true,"Please proivde a name"]
         },
-        image: String,
+        image:{
+            type: String,
+            required: [true, "Please provide Url of Image"],
+            unique: [true, "No dupilcates,Please use another Image"]
+        }, 
         instrument: String,
     },
     {
         timestamp: true
     }
 );
-// Mongoose.model(mongodb collection name, ourschema)
-const Musicians = mongoose.model("Musicians",musiciansSchema)
+
+
+// mongoose.model(<mongodb collection name>, our schema) is the general default and it creates a collection inside of MongoDB that is named from the first argument, Musicians here. And it applies the schema above to that collection.
+const Musicians = mongoose.model("Musician", musiciansSchema)
 
 
 module.exports = Musicians;
