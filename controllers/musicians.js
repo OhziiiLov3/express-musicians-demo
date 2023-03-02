@@ -37,31 +37,46 @@ router.get("/new", (req, res) => {
 
 
 
-
-
-
-
-router.post('/', async (req,res,next)=>{
-    try {
-        const newArtist = await Musicians.create(req.body)
-        console.log(req.body)
-        console.log(newArtist)
-        res.redirect('/musicians')
-    } catch (error) {
-        console.log(error);
-        return next()
-    }
-})
-
-
+// Edit - route
 router.get("/:id/edit", async (req, res, next) => {
   try {
     const artistToEdit = await Musicians.findById(req.params.id);
+    console.log(artistToEdit)
+    res.render('musicians/edit.ejs', {artistToEdit: artistToEdit})
   } catch (error) {
     console.log(error);
     return next()
   }
 });
+
+router.post("/", async (req, res, next) => {
+  try {
+    const newArtist = await Musicians.create(req.body);
+    console.log(req.body);
+    console.log(newArtist);
+    res.redirect("/musicians");
+  } catch (error) {
+    console.log(error);
+    return next();
+  }
+});
+
+// PUT - ROUTE 
+
+router.put('/:id', async(req,res,next) => {
+    try{
+        console.log(req.params.id)
+        console.log(req.body)
+        const updateArtist = await Musicians.findByIdAndUpdate(req.params.id, req.body);
+        console.log(updateArtist)
+        res.redirect('/musicians')
+    }catch(error){
+        console.log(error)
+        return next()
+    }
+})
+
+
 // DELETE Musician by ID
 router.delete("/:id", async (req, res,next) => {
   try {

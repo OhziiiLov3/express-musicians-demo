@@ -1,0 +1,39 @@
+<%- include('../partials/head') %>
+
+    <body>
+        <%- include('../partials/header') %>
+
+            <main>
+                <div class="container my-2 py-2">
+                    <h1 class="text-center">Update Musician</h1>
+                    <h3 class="text-center"><%= artistToEdit.name %></h3>
+                    <form method="POST" action="/musicians/<%= artistToEdit._id %>?_method=PUT">
+                        <div class="mb-2">
+                            <label for="name"> Edit Artist's Name</label>
+                            <input class="form-control" type="text" name="name" id="name" value=<%= artistToEdit.name %>>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" for="name">Update Url for Image</label>
+                            <input class="form-control" type="text" name="image" id="image" value=<%= artistToEdit.image %>>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" for="name">Update Artist's Instruments</label>
+                            <input class="form-control" type="text" name="instrument" id="instrument" value=<%= artistToEdit.instrument %>>
+                        </div>
+                        <div class="text-center my-2 py-2">
+                            <input type="submit" class="btn btn-warning" value="Edit <%= artistToEdit.name %>" />
+                        </div>
+
+                    </form>
+                </div>
+
+
+
+            </main>
+
+
+
+            <footer>
+                <%- include('../partials/footer') %>
+            </footer>
+    </body>
