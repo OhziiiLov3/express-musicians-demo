@@ -4,6 +4,7 @@ const methodOverride = require("method-override");
 // imports controller from folder
 const musiciansController = require("./controllers/musicians")
 const userController = require("./controllers/users")
+const apiController = require("./controllers/apiUsers")
 // Allows us to override form method to delete
 app.use(methodOverride("_method"));
 
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 // Route to Controllers Folder  app.use wants to use all the imports from controller
 app.use("/musicians",musiciansController)
 app.use("/users", userController);
+app.use("/apiUsers", apiController);
 
 // All Error Handleing Route
 app.get("/*", (req, res) => {

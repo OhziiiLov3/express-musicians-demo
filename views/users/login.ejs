@@ -1,0 +1,28 @@
+<%- include("../partials/head") %>
+
+    <body>
+        <%- include("../partials/header") %>
+            <main>
+                <div class="container my-2 py-2">
+                    <h1 class="text-center">Login</h1>
+                    <form method="POST" action="/users/login/">
+                        <div class="mb-2">
+                            <label for="name"> Enter Username</label>
+                            <input class="form-control" type="text" name="username" id="username">
+                        </div>
+                        <div class="mb-2">
+                            <label for="name"> Enter Password</label>
+                            <input class="form-control" type="text" name="password" id="password">
+                        </div>
+                        <div class="text-center my-2 py-2">
+                            <input type="submit" class="btn btn-primary" value="Login" />
+                        </div>
+
+                    </form>
+                </div>
+                <footer>
+                    <%- include("../partials/footer") %>
+                </footer>
+
+            </main>
+    </body>
