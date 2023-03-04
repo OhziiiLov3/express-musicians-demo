@@ -7,7 +7,7 @@ const { response } = require("express");
 router.get('/', async (req, res, next)=>{
     console.log('apiUsers Route Working');
     try {
-        const response = await axios.get("https://reqres.in/api/users/2")
+        const response = await axios.get("https://reqres.in/api/users/")
         res.json(response.data)
         const userId = response.data
         console.log(userId)

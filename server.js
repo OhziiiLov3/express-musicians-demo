@@ -5,6 +5,7 @@ const methodOverride = require("method-override");
 const musiciansController = require("./controllers/musicians")
 const userController = require("./controllers/users")
 const apiController = require("./controllers/apiUsers")
+const breweriesController = require("./controllers/breweries")
 // Allows us to override form method to delete
 app.use(methodOverride("_method"));
 
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 app.use("/musicians",musiciansController)
 app.use("/users", userController);
 app.use("/apiUsers", apiController);
+app.use("/breweries", breweriesController);
 
 // All Error Handleing Route
 app.get("/*", (req, res) => {
