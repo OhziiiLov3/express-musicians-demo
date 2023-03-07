@@ -7,16 +7,39 @@ const {Musicians} = require('../models')
 
 // GET ALL Musician 
 
-router.get('/', async (req,res,next) =>{
-    try{
-        const myMusicians = await Musicians.find({})
-        // console.log(myMusicians)
-        res.render("musicians/index.ejs", {musicians: myMusicians})
-    } catch(err){
-        console.log(err);
-        return next
-    }
+
+router.get('/', async (req,res, next)=>{
+  try {
+if(req.session.currentUser) console.log(req.session.currentUser.username);
+
+const myMusicians = await Musicians.find({})
+console.log(myMusicians)
+if(req.session.currentUser !== undefined){
+  
+return res.render('musicians/index.ejs',{musicians: myMusicians, user: req.session.currentUser.username})
+
+}else{
+  return res.render('musicians/index.ejs',{musicians: myMusicians})
+}
+    
+  } catch (error) {
+    console.log(error)
+    return next()
+  }
 })
+
+
+
+// router.get('/', async (req,res,next) =>{
+//     try{
+//         const myMusicians = await Musicians.find({})
+//         // console.log(myMusicians)
+//         res.render("musicians/index.ejs", {musicians: myMusicians})
+//     } catch(err){
+//         console.log(err);
+//         return next
+//     }
+// })
 
 // GET Musician by ID
 router.get('/:id', async (req,res,next)=>{
