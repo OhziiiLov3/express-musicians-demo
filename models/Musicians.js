@@ -1,21 +1,22 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema;
 
 const musiciansSchema = new mongoose.Schema(
-    {
-        name: {
-            type:String,
-            required: [true,"Please proivde a name"]
-        },
-        image:{
-            type: String,
-            required: [true, "Please provide Url of Image"],
-            unique: [true, "No dupilcates,Please use another Image"]
-        }, 
-        instrument: String,
+  {
+    name: {
+      type: String,
+      required: [true, "Please proivde a name"],
     },
-    {
-        timestamp: true
-    }
+    image: {
+      type: String,
+      required: [true, "Please provide Url of Image"],
+      unique: [true, "No dupilcates,Please use another Image"],
+    },
+    instrument: String,
+  },
+  {
+    timestamp: true,
+  }
 );
 
 

@@ -9,6 +9,13 @@ const breweriesController = require("./controllers/breweries")
 // Allows us to override form method to delete
 app.use(methodOverride("_method"));
 
+const session = require("express-session");
+const MongoStore = require("connect-mongo")
+require('dotenv').config();
+
+
+/* MiddleWare */
+
 //  setup ejs 
 app.set("view engine","ejs")
 //  connect css files and js files 
@@ -17,6 +24,21 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }));
 // config varaible 
 const PORT = 3000
+
+app.use(
+  session({
+    // where to store the sessions in mongodb
+    store: MongoStore.create({mongoUrl: process.env.DATABASE_URL}),
+    // Secret Key 
+    secret: "super secret",
+    resave: false,
+    saveUninitialized: false,
+    //  config the expectation of the cookie 
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7, 
+    },
+  })
+);
 
 
 

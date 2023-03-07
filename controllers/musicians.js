@@ -42,6 +42,7 @@ router.get("/:id/edit", async (req, res, next) => {
   try {
     const artistToEdit = await Musicians.findById(req.params.id);
     console.log(artistToEdit)
+    console.log(req.params.id)
     res.render('musicians/edit.ejs', {artistToEdit: artistToEdit})
   } catch (error) {
     console.log(error);
@@ -52,7 +53,6 @@ router.get("/:id/edit", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     const newArtist = await Musicians.create(req.body);
-    console.log(req.body);
     console.log(newArtist);
     res.redirect("/musicians");
   } catch (error) {

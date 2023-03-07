@@ -15,23 +15,37 @@ router.get('/login', (req,res)=>{
 })
 
 
+
+router.get('/logout', (req, res, next) =>{
+  try{
+    const destroySession = req.session
+    destroySession.destroy()
+    console.log(destroySession)
+    res.redirect('/')
+  }catch(err){
+    console.log(err)
+    next()
+  }
+})
+
 router.post('/login', async (req,res, next )=>{
     try{
       const userLogin = req.body;
       const foundUser = await Users.findOne({username: userLogin.username})
 
 
-      if(!foundUser){
-        return res.redirect('users/signup')
-      }
+      // if(!foundUser){
+      //   return res.redirect('users/signup')
+      // }
 
       const match = await bcrypt.compare(userLogin.password, foundUser.password);
       console.log(match)
-      if (!match) {
-        return res.send("Username or password doesn't match")
-      }else{
-        res.redirect('/')
+      if (!match) return res.send("Email or password doesn't Match!");
+      req.session.currentUser = {
+        id: foundUser._id,
+        username: foundUser.username,
       }
+      return res.redirect('/musicians')
     }catch(error){
       console.log(error)
       return next()
